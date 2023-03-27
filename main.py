@@ -17,16 +17,14 @@ class RomanstoInt:
                 i += 1
         return result
 
-    def int_to_roman(self, num: int) -> str:
+    def is_valid_roman_numeral(self, s: str) -> bool:
         """
-        Converts an integer to a Roman numeral.
+        Check whether a string is a valid Roman numeral.
         """
-        result = ''
-        for numeral, value in self.roman_numerals.items():
-            while num >= value:
-                result += numeral
-                num -= value
-        return result
+        for letter in s:
+            if letter not in self.roman_numerals:
+                return False
+        return True
 
     def combine_roman_numerals(self, s1: str, s2: str) -> int:
         """
@@ -44,9 +42,7 @@ converter = RomanstoInt()
 # Convert a Roman numeral to an integer
 print(converter.roman_to_int('XXI'))  # Output: 21
 
-# Convert an integer to a Roman numeral
-print(converter.int_to_roman(27))  # Output: 'MMXXIII'
-
 # Combine two Roman numerals to make a new one
-print(converter.combine_roman_numerals('X', 'VIII'))  # Output: 'XVIII'
+print(converter.combine_roman_numerals('X', 'VIII'))  # Output: '18'
+print(converter.combine_roman_numerals('XX', 'IV'))  # Output: '24'
 
